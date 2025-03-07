@@ -1,0 +1,39 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #bfdbf7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NamesWheel */
+.NamesWheel .add-button{
+  background-color: #053c5e;
+}
+.NamesWheel .delete-button{
+  background-color: #A31621;
+}
