@@ -1,39 +1,103 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #bfdbf7;
+  background-color: #669BBC;
+  font-family: "Poppins", sans-serif;
+}
+
+/* HOMEPAGE */
+.wheel-title {
+  font-family: "Poppins", sans-serif;
+  color: #003049;
+  font-size: 45px;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  background: linear-gradient(145deg, #FDF0D5, #f8e7c7);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), 
+              -4px -4px 10px rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 20px auto;
 }
 
 
+.cards-section {
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
+/* Wheel Card */
+.wheel-card {
+  background: linear-gradient(145deg, #FDF0D5, #f8e7c7);
+  padding: 50px;
+  margin: 50px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), 
+              -5px -5px 15px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  /* width: 250px; */
+}
 
+.wheel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3),
+              -8px -8px 20px rgba(255, 255, 255, 0.5);
+}
 
+/* Buttons */
+.wheel-card button {
+  background-color: #003049;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.wheel-card button:hover {
+  background-color: #669BBC;
+  transform: scale(1.05);
+}
 
 /* NamesWheel */
-.NamesWheel .add-button{
+.NamesWheel .add-button {
   background-color: #053c5e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
-.NamesWheel .delete-button{
+
+.NamesWheel .add-button:hover {
+  background-color: #08648e;
+  transform: scale(1.05);
+}
+
+.NamesWheel .delete-button {
   background-color: #A31621;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.NamesWheel .delete-button:hover {
+  background-color: #c01a27;
+  transform: scale(1.05);
 }
