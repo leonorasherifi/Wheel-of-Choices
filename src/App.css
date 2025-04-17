@@ -8,7 +8,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* HOMEPAGE */
+/* HOMEPAGE  -----------------------------------------------------------------------------------------------*/
 .wheel-title {
   font-family: "Poppins", sans-serif;
   color: #003049;
@@ -100,4 +100,41 @@ body {
 .NamesWheel .delete-button:hover {
   background-color: #c01a27;
   transform: scale(1.05);
+}
+
+/* ---------------------------------------------------------------------------------------------------------*/
+
+
+/* Wheel of Names ------------------------------------------------------------------------------------------*/
+.NamesWheel canvas{
+  background-color: #ffffff;
+  border: 2px solid #003049;
+  box-shadow: 5px 5px 15px rgb(5 60 94), -5px -5px 15px rgb(5 60 94)
+}
+.NamesWheel .wheel-input{
+  background-color: #ffffff;
+  outline: none;
+}
+.NamesWheel .winer-name{
+  font-size: 35px;
+  padding: 10px;
+}
+
+
+/* Wheel of Numbers ----------------------------------------------------------------------------------------*/
+.NumbersWheel canvas{
+  background-color: #ffffff;
+  border: 2px solid #003049;
+  box-shadow: 5px 5px 15px rgb(5 60 94), -5px -5px 15px rgb(5 60 94)
+}
+.NumbersWheel .numbers-arrow{
+  align-content: center;
+
+}
+.NumbersWheel button{
+  background-color: #053c5e;
+}
+.NumbersWheel .winer-number{
+  font-size: 35px;
+  padding: 10px;
 }

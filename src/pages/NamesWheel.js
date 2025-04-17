@@ -53,35 +53,44 @@ const NamesWheel = () => {
     const ctx = canvas.getContext("2d");
     const radius = canvas.width / 2;
     const sliceAngle = (2 * Math.PI) / Math.max(names.length, 1);
-
+  
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  
+    // Define a color palette that fits the theme
+    const colors = [
+      "#E09F3E", "#9E2A2B", "#540B0E", "#D88C3E", "#B85231", "#70161E",
+      "#F77F00", "#FFBA08", "#E63946", "#F4A261", "#D62828", "#E85D04"
+    ];
+    
+  
     names.forEach((name, index) => {
       const startAngle = index * sliceAngle;
       const endAngle = (index + 1) * sliceAngle;
-
+  
       ctx.beginPath();
       ctx.moveTo(radius, radius);
       ctx.arc(radius, radius, radius, startAngle, endAngle);
-      ctx.fillStyle = `hsl(${(index * 360) / names.length}, 100%, 50%)`;
+      
+      ctx.fillStyle = colors[index % colors.length]; // Rotate through predefined colors
       ctx.fill();
-      ctx.stroke();
-
+      // ctx.stroke();
+  
       ctx.save();
       ctx.translate(radius, radius);
       ctx.rotate(startAngle + sliceAngle / 2);
-      ctx.fillStyle = "white";
-      ctx.font = "14px Arial";
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "14px Poppins, Arial";
       ctx.textAlign = "right";
       ctx.fillText(name, radius - 10, 5);
       ctx.restore();
     });
   };
+  
 
   return (
     <div className="NamesWheel">
-      <div className="flex flex-col items-center p-6 relative">
-        <h1 className="text-2xl font-bold mb-4">Wheel of Names</h1>
+      <div className="flex flex-col items-center gap-8 p-10">
+        <h1 className="wheel-title text-5xl font-bold text-center">Wheel of Names</h1>
 
         {/* Wheel and Spin Button */}
         <div className="relative my-4">
@@ -93,7 +102,7 @@ const NamesWheel = () => {
             animate={{ rotate: rotation }}
             transition={{ duration: 2, ease: "easeOut" }}
           >
-            <canvas ref={canvasRef} width={300} height={300} className="bg-white border rounded-full" />
+            <canvas ref={canvasRef} width={300} height={300} className="border rounded-full" />
           </motion.div>
         </div>
 
@@ -103,14 +112,16 @@ const NamesWheel = () => {
 
         
         {/* Input & Add Button */}
-        <div className="flex gap-2 mb-4">
-          <input
-            type="text"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-            className="border p-2 rounded"
-            placeholder="Enter name"
-          />
+        <div className="flex gap-2">
+        <input
+          type="text"
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && addName()}  // Handles Enter key
+          className="wheel-input border p-2 rounded"
+          placeholder="Enter name"
+          style={{ color: names.includes(newName.trim()) ? "red" : "black" }}
+        />
           <button onClick={addName} className="add-button  text-white px-4 py-2 rounded">
             Add
           </button>
@@ -162,19 +173,26 @@ const NamesWheel = () => {
         {/* Modal for Selected Name */}
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50">
-            <div className="bg-white p-6 rounded shadow-lg text-center">
-              <h2 className="text-xl font-bold">Selected Name: {selected}</h2>
-              <div className="flex gap-4 mt-4">
-                <button onClick={() => setShowModal(false)} className="bg-green-500 text-white px-4 py-2 rounded">
+            <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
+              <h2 className="text-xl font-bold text-[#003049]">Selected Name:</h2>
+              <h2 className="winer-name text-xl font-bold text-[#003049]">{selected}</h2>
+              <div className="flex gap-4 mt-4 justify-center">
+                <button 
+                  onClick={() => setShowModal(false)} 
+                  className="bg-[#E09F3E] text-white px-6 py-3 rounded-lg shadow-md transition duration-300 ease-in-out">
                   Confirm
                 </button>
-                <button  onClick={() => removeNameFromList(selected)} className="bg-red-500 text-white px-4 py-2 rounded">
+                <button  
+                  onClick={() => removeNameFromList(selected)} 
+                  className="bg-[#9E2A2B] text-white px-6 py-3 rounded-lg shadow-md transition duration-300 ease-in-out">
                   Remove
                 </button>
               </div>
             </div>
           </div>
+
         )}
+        
       </div>
     </div>
   );
